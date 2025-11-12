@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "postinstall": "npm rebuild bcrypt --build-from-source || true"
+    "postinstall": "npm rebuild bcrypt --build-from-source ||
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.81.1",
@@ -40,4 +40,5 @@
     "node": "18.x"
   }
 }
+
 
