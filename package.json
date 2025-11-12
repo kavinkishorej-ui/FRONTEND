@@ -8,8 +8,7 @@
     "build": "node ./node_modules/vite/bin/vite.js build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "postinstall": "npm rebuild bcrypt --build-from-source ||
+    "typecheck": "tsc --noEmit -p tsconfig.app.json"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.81.1",
@@ -40,8 +39,3 @@
     "node": "22.x"
   }
 }
-
-
-
-
-
