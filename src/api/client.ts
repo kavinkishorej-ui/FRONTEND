@@ -1,4 +1,11 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const RAW_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+// normalize base URL: remove trailing slash if present
+function normalizeBaseUrl(url: string) {
+  return url.endsWith('/') ? url.slice(0, -1) : url;
+}
+
+const API_URL = normalizeBaseUrl(RAW_API_URL);
 
 class ApiClient {
   private baseUrl: string;
@@ -22,7 +29,14 @@ class ApiClient {
     };
 
     const response = await fetch(url, config);
-    const data = await response.json();
+
+    // safe json parse: if there's no JSON body, fall back to empty object
+    let data: any = {};
+    try {
+      data = await response.json();
+    } catch (e) {
+      // keep data as {} when response has no JSON
+    }
 
     if (!response.ok) {
       throw new Error(data.error || 'Request failed');
